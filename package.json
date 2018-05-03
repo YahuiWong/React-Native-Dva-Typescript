@@ -3,16 +3,29 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "postinstall": "rm ./node_modules/react-native/local-cli/core/__fixtures__/files/package.json",
     "start": "react-native start --transformer node_modules/react-native-typescript-transformer/index.js --sourceExts ts,tsx",
     "test": "jest"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "dva-core": "^1.2.1",
+    "immutable": "^3.8.2",
     "react": "16.3.1",
-    "react-native": "0.55.3"
+    "react-native": "0.55.3",
+    "react-navigation": "^1.5.11",
+    "react-navigation-redux-helpers": "^1.0.5",
+    "react-redux": "^5.0.7",
+    "redux-logger": "^3.0.6"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/immutable": "^3.8.7",
     "@types/react": "^16.3.13",
     "@types/react-native": "^0.55.10",
+    "@types/react-navigation": "^1.5.9",
+    "@types/react-redux": "^5.0.19",
+    "@types/redux-logger": "^3.0.6",
     "babel-jest": "22.4.3",
     "babel-preset-react-native": "4.0.0",
     "jest": "22.4.3",
