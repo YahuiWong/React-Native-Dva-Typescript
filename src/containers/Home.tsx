@@ -3,9 +3,11 @@ import {
     StyleSheet,
     Text,
     View,
-    Button
+    Button,
+    Image
 } from "react-native";
-
+import { NavigationTabScreenOptions } from "react-navigation";
+import {NavigationActions} from '../utils';
 import {connect} from '../utils/dva';
 interface Props {
     count:number,
@@ -14,6 +16,16 @@ interface Props {
 interface State {
 }
 class App extends Component<Props, State> {
+    static navigationOptions: NavigationTabScreenOptions  = {
+        title: 'Home',
+        tabBarLabel: 'Home',
+        tabBarIcon: ({ focused, tintColor }) => (
+          <Image
+            style={[styles.icon, { tintColor: focused ? tintColor : 'gray' }]}
+            source={require('../images/house.png')}
+          />
+        ),
+      }
     render() {
         return (
             <View style={styles.container}>
@@ -27,6 +39,7 @@ class App extends Component<Props, State> {
                 <Button title="+" onPress={() => { this.props.dispatch({ type: 'count/add' }); }} />
                 <Button title="-" onPress={() => { this.props.dispatch({ type: 'count/minus' }); }} />
                 <Button title="+ async" onPress={() => { this.props.dispatch({ type: 'count/addWithDelay' }); }} />
+                <Button title="Go TO Detail" onPress={() => {this.props.dispatch(NavigationActions.navigate({ routeName: 'Detail' }))}} />
             </View>
         );
     }
@@ -43,6 +56,10 @@ const styles = StyleSheet.create({
         textAlign: "center",
         margin: 10,
     },
+    icon: {
+        width: 32,
+        height: 32,
+      },
 });
 
 function mapStateToProps(state:any) {
