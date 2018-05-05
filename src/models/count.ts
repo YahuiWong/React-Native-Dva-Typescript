@@ -1,9 +1,14 @@
+import SImmutable from 'seamless-immutable';
 
 import {delay} from '../utils/index';
+
+
 type countState=number
+
+const initState=SImmutable<countState>(0 as countState)
 export default {
   namespace: 'count',
-  state: 0 as countState,
+  state: initState,
   reducers: {
     add(state:countState) { return state + 1; },
     minus(state:countState) { return state - 1; },

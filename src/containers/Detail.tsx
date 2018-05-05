@@ -6,9 +6,7 @@ import {
 } from "react-native";
 interface Props {
 }
-interface State {
-}
-export default class App extends Component<Props, State> {
+export default class App extends Component<Props> {
     static navigationOptions = {
         title: 'Detail',
       }

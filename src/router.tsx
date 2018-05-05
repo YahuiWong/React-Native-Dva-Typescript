@@ -15,14 +15,16 @@ import {
 import { connect } from 'react-redux'
 
 import Home from './containers/Home'
+import Home1 from './containers/Home'
+import Home2 from './containers/Home'
 import Detail from './containers/Detail'
 import Loading from './containers/Loading'
 
 const HomeNavigator = TabNavigator(
   {
     Home: { screen: Home },
-    Home1: { screen: Home },
-    Home2: { screen: Home }
+    Home1: { screen: Home1 },
+    Home2: { screen: Home2 }
   },
   {
     tabBarComponent: TabBarBottom,

@@ -13,9 +13,7 @@ interface Props {
     count:number,
     dispatch?:any
 }
-interface State {
-}
-class App extends Component<Props, State> {
+class App extends Component<Props> {
     static navigationOptions: NavigationTabScreenOptions  = {
         title: 'Home',
         tabBarLabel: 'Home',
