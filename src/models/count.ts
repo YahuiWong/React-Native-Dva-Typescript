@@ -9,7 +9,7 @@ export default {
     minus(state:countState) { return state - 1; },
   },
   effects: {
-    *addWithDelay(action, { call, put }) {
+    *addWithDelay(action:any, { call, put }) {
       console.log('====================================');
       console.log(action);
       console.log('====================================');
