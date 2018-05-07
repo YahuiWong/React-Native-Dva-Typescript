@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { ListView, Dimensions } from 'react-native';
-
 export { NavigationActions } from 'react-navigation'
 
 export const setAccessToken = (access_token:string) => {
