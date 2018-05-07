@@ -441,12 +441,6 @@
   dependencies:
     axios "*"
 
-"@types/immutable@^3.8.7":
-  version "3.8.7"
-  resolved "https://registry.yarnpkg.com/@types/immutable/-/immutable-3.8.7.tgz#536d33d30f3f3d9a6d4642a219419fd82af633fb"
-  dependencies:
-    immutable "*"
-
 "@types/react-native@*", "@types/react-native@^0.55.10":
   version "0.55.10"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.55.10.tgz#d68c1dd216caa5a5732774f508ad3203335cca5d"
@@ -2566,10 +2560,6 @@ ignore-walk@^3.0.1:
 image-size@^0.6.0:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.6.2.tgz#8ee316d4298b028b965091b673d5f1537adee5b4"
-
-immutable@*, immutable@^3.8.2:
-  version "3.8.2"
-  resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
 
 import-local@^1.0.0:
   version "1.0.0"

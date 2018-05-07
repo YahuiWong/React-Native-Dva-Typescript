@@ -1,13 +1,5 @@
 import axios from 'axios';
 import { ListView, Dimensions } from 'react-native';
-import Immutable from 'immutable';
-export const dataSourceRowInit = () => {
-    return new ListView.DataSource({
-        // rowHasChanged: (row1, row2) =>row1 !== row2,
-        rowHasChanged: (row1, row2) => Immutable.is(row1, row2)
-
-    })
-}
 
 export { NavigationActions } from 'react-navigation'
 
