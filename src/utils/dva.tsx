@@ -1,4 +1,5 @@
 import React from 'react'
+import { Provider, connect } from 'react-redux'
 var {create}= require("dva-core")
 export { connect }
 
@@ -28,7 +29,7 @@ export default function(options:any) {
 //   StoreEnhancer
 // } from 'redux';
 
-// import { Provider, connect } from 'react-redux'
+
 
 // export function connect(
 //   mapStateToProps?: Function,
