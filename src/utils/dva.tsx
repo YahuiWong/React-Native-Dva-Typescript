@@ -2,12 +2,18 @@ import React from 'react'
 import { Provider, connect } from 'react-redux'
 var {create}= require("dva-core")
 export { connect }
+export interface Options{
+  models:Model[],
+  initialState:any,
+  onError:(e:any)=>void,
+  onAction:any[]
+}
 
-export default function(options:any) {
+export function dva(options:Options) {
   const app = create(options)
   // HMR workaround
 //   if (!global.registered) 
-  options.models.forEach((model:any) => app.model(model))
+  options.models.forEach((model:Model) => app.model(model))
 //   global.registered = true
 
   app.start()
@@ -20,53 +26,44 @@ export default function(options:any) {
   return app
 }
 
-// import {
-//   Reducer,
-//   Action,
-//   ReducersMapObject,
-//   Dispatch,
-//   MiddlewareAPI,
-//   StoreEnhancer
-// } from 'redux';
+import {
+  Reducer,
+  Action,
+  ReducersMapObject,
+  Dispatch,
+  MiddlewareAPI,
+  StoreEnhancer
+} from 'redux';
 
-
-
-// export function connect(
-//   mapStateToProps?: Function,
-//   mapDispatchToProps?: Function,
-//   mergeProps?: Function,
-//   options?: Object
-// ): Function;
-// export interface EffectsCommandMap {
-//   put: <A extends Action>(action: A) => any;
-//   call: Function;
-//   select: Function;
-//   take: Function;
-//   cancel: Function;
-//   [key: string]: any;
-// }
-// export interface EffectsMapObject {
-//   [key: string]: Effect | EffectWithType;
-// }
-// export interface ReducerEnhancer {
-//   (reducer: Reducer<any>): void
-// }
-// export interface SubscriptionAPI {
-//   // history: History;
-//   dispatch: Dispatch<any>;
-// }
-// export type EffectType = 'takeEvery' | 'takeLatest' | 'watcher' | 'throttle';
-// export type EffectWithType = [Effect, { type : EffectType }];
-// export type Effect = (action: Action, effects: EffectsCommandMap) => void;
-// export type ReducersMapObjectWithEnhancer = [ReducersMapObject, ReducerEnhancer];
-// export type Subscription = (api: SubscriptionAPI, done: Function) => void;
-// export interface SubscriptionsMapObject {
-//   [key: string]: Subscription;
-// }
-// export interface Model {
-//   namespace: string,
-//   state?: any,
-//   reducers?: ReducersMapObject | ReducersMapObjectWithEnhancer,
-//   effects?: EffectsMapObject,
-//   subscriptions?: SubscriptionsMapObject,
-// }
+export interface EffectsCommandMap {
+  put: <A extends Action>(action: A) => any;
+  call: Function;
+  select: Function;
+  take: Function;
+  cancel: Function;
+  [key: string]: any;
+}
+export interface EffectsMapObject {
+  [key: string]: Effect | EffectWithType;
+}
+export interface ReducerEnhancer {
+  (reducer: Reducer<any>): void
+}
+export interface SubscriptionAPI {
+  dispatch: Dispatch<any>;
+}
+export type EffectType = 'takeEvery' | 'takeLatest' | 'watcher' | 'throttle';
+export type EffectWithType = [Effect, { type : EffectType }];
+export type Effect = (action: Action, effects: EffectsCommandMap) => void;
+export type ReducersMapObjectWithEnhancer = [ReducersMapObject, ReducerEnhancer];
+export type Subscription = (api: SubscriptionAPI, done: Function) => void;
+export interface SubscriptionsMapObject {
+  [key: string]: Subscription;
+}
+export interface Model {
+  namespace: string,
+  state?: any,
+  reducers?: ReducersMapObject | ReducersMapObjectWithEnhancer,
+  effects?: EffectsMapObject,
+  subscriptions?: SubscriptionsMapObject,
+}

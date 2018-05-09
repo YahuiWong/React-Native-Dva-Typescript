@@ -1,12 +1,13 @@
 import SImmutable from 'seamless-immutable';
 
 import {delay} from '../utils/index';
+import { Model } from "../utils/dva";
 
 
 type countState=number
 
 const initState=SImmutable<countState>(0 as countState)
-export default {
+export default  {
   namespace: 'count',
   state: initState,
   reducers: {
@@ -28,4 +29,4 @@ export default {
       yield put({ type: 'add' });
     }
   },
-}
+} as Model
