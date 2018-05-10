@@ -10,8 +10,8 @@ import { NavigationTabScreenOptions } from "react-navigation";
 import {NavigationActions} from '../utils';
 import {connect} from '../utils/dva';
 interface Props {
-    count:number,
-    dispatch?:any
+    count: number;
+    dispatch?: any;
 }
 class App extends Component<Props> {
     static navigationOptions: NavigationTabScreenOptions  = {
@@ -23,13 +23,12 @@ class App extends Component<Props> {
             source={require('../images/house.png')}
           />
         ),
-      }
+      };
     render() {
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>
                     Welcome to React Native!
-                    
                 </Text>
                 <Text style={styles.text}>
                     Count: { this.props.count }
@@ -37,7 +36,7 @@ class App extends Component<Props> {
                 <Button title="+" onPress={() => { this.props.dispatch({ type: 'count/add' }); }} />
                 <Button title="-" onPress={() => { this.props.dispatch({ type: 'count/minus' }); }} />
                 <Button title="+ async" onPress={() => { this.props.dispatch({ type: 'count/addWithDelay' }); }} />
-                <Button title="Go TO Detail" onPress={() => {this.props.dispatch(NavigationActions.navigate({ routeName: 'Detail' }))}} />
+                <Button title="Go TO Detail" onPress={() => {this.props.dispatch(NavigationActions.navigate({ routeName: 'Detail' })); }} />
             </View>
         );
     }
@@ -60,7 +59,7 @@ const styles = StyleSheet.create({
       },
 });
 
-function mapStateToProps(state:any) {
+function mapStateToProps(state: any) {
     return {
       count: state.count,
     };

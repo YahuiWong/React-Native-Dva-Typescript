@@ -9,8 +9,8 @@ interface Props {
 export default class App extends Component<Props> {
     static navigationOptions = {
         title: 'Detail',
-      }
-    
+      };
+
     render() {
         return (
             <View style={styles.container}>

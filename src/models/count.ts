@@ -4,18 +4,18 @@ import {delay} from '../utils/index';
 import { Model } from "../utils/dva";
 
 
-type countState=number
+type countState= number;
 
-const initState=SImmutable<countState>(0 as countState)
+const initState = SImmutable<countState>(0 as countState);
 export default  {
   namespace: 'count',
   state: initState,
   reducers: {
-    add(state:countState) { return state + 1; },
-    minus(state:countState) { return state - 1; },
+    add(state: countState) { return state + 1; },
+    minus(state: countState) { return state - 1; },
   },
   effects: {
-    *addWithDelay(action:any, { call, put }) {
+    *addWithDelay(action: any, { call, put }) {
       console.log('====================================');
       console.log(action);
       console.log('====================================');
@@ -29,4 +29,4 @@ export default  {
       yield put({ type: 'add' });
     }
   },
-} as Model
+} as Model;
