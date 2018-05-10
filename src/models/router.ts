@@ -1,7 +1,7 @@
 import { delay, NavigationActions } from '../utils';
 import { routerReducer } from '../router';
 import { Model , EffectsCommandMap} from "../utils/dva";
-const actions = Object.keys(NavigationActions).filter(
+const actions = Object.values(NavigationActions).filter(
   (x: any) => typeof x === 'string' && x.startsWith('Navigation/')
 );
 
