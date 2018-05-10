@@ -6,7 +6,7 @@ import { Model } from "../utils/dva";
 
 type countState= number;
 
-const initState = SImmutable<countState>(0 as countState);
+let initState = SImmutable<countState>(0 as countState);
 export default  {
   namespace: 'count',
   state: initState,
@@ -19,9 +19,7 @@ export default  {
       console.log('====================================');
       console.log(action);
       console.log('====================================');
-      console.log('====================================');
       console.log(call);
-      console.log('====================================');
       console.log('====================================');
       console.log(put);
       console.log('====================================');

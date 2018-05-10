@@ -447,9 +447,9 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-navigation@^1.5.9":
-  version "1.5.9"
-  resolved "https://registry.yarnpkg.com/@types/react-navigation/-/react-navigation-1.5.9.tgz#a3e6d0646131ffbc3ee228a82fa1f19b140edfd7"
+"@types/react-navigation@^1.5.11":
+  version "1.5.11"
+  resolved "http://registry.npm.taobao.org/@types/react-navigation/download/@types/react-navigation-1.5.11.tgz#317eb81ff8a4dfbad8f374cadab30e07e0effa31"
   dependencies:
     "@types/react" "*"
     "@types/react-native" "*"
