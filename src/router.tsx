@@ -39,7 +39,7 @@ const HomeNavigator = TabNavigator(
 
 const AppNavigator = StackNavigator(
   {
-    Login: { screen: Login},
+    Login: { screen: Login },
     Main: { screen: HomeNavigator },
     Detail: { screen: Detail },
   },
@@ -94,10 +94,10 @@ export const routerMiddleware = createReactNavigationReduxMiddleware(
 );
 const addListener = createReduxBoundAddListener('root');
 interface IProps {
-    count: any;
-    router: any;
-    app: any;
-    dispatch: any;
+  count: any;
+  router: any;
+  app: any;
+  dispatch: any;
 }
 
 class Router extends PureComponent<IProps> {
@@ -144,7 +144,11 @@ export function routerReducer(state?: any, action: any = {}) {
 
 // @connect(({ app, router }) => ({ app, router }))
 function mapStateToProps(state: any) {
-    return { count: state.count, router : state.router, app: state.app};
-  }
-  export default connect(mapStateToProps)(Router);
+  return {
+    count: state.count,
+    router: state.router,
+    app: state.app
+  };
+}
+export default connect(mapStateToProps)(Router);
 // export default Router
