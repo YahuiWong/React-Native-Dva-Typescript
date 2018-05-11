@@ -2,13 +2,19 @@ import { createAction, NavigationActions, Storage } from '../utils';
 import * as authService from '../services/auth';
 import { Model } from '../utils/dva';
 
+export type AppState = {
+  login: boolean,
+  loading: boolean,
+  fetching: boolean,
+};
+
 export default {
   namespace: 'app',
   state: {
     login: false,
     loading: true,
     fetching: false,
-  },
+  } as AppState,
   reducers: {
     updateState(state, { payload }) {
       return { ...state, ...payload };

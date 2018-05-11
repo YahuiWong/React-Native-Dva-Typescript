@@ -5,10 +5,8 @@ import {connect} from '../utils/dva';
 // import { Button, Touchable } from '../components';
 
 import { createAction, NavigationActions } from '../utils';
-interface Props {
-    login: boolean;
-    loading: boolean;
-    fetching: boolean;
+import {AppState} from '../models/app';
+interface Props extends AppState {
     dispatch?: any;
 }
 // @connect(({ app }) => ({ ...app }))
@@ -60,9 +58,7 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state: any) {
     return {
-        login: state.login,
-        loading:  state.loading,
-        fetching:  state.fetching
+       ...state.app
     };
   }
-  export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps)(Login);
