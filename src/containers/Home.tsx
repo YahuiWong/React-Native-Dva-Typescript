@@ -37,6 +37,7 @@ class App extends Component<Props> {
                 <Button title="-" onPress={() => { this.props.dispatch({ type: 'count/minus' }); }} />
                 <Button title="+ async" onPress={() => { this.props.dispatch({ type: 'count/addWithDelay' }); }} />
                 <Button title="Go TO Detail" onPress={() => {this.props.dispatch(NavigationActions.navigate({ routeName: 'Detail' })); }} />
+                <Button title="Go TO Login" onPress={() => {this.props.dispatch(NavigationActions.navigate({ routeName: 'Login' })); }} />
             </View>
         );
     }
@@ -64,4 +65,4 @@ function mapStateToProps(state: any) {
       count: state.count,
     };
   }
-  export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(App);

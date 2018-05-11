@@ -14,6 +14,7 @@ import {
 } from 'react-navigation-redux-helpers';
 import { connect } from 'react-redux';
 
+import Login from './containers/Login';
 import Home from './containers/Home';
 import Home1 from './containers/Home';
 import Home2 from './containers/Home';
@@ -38,6 +39,7 @@ const HomeNavigator = TabNavigator(
 
 const AppNavigator = StackNavigator(
   {
+    Login: { screen: Login},
     Main: { screen: HomeNavigator },
     Detail: { screen: Detail },
   },
@@ -94,6 +96,7 @@ const addListener = createReduxBoundAddListener('root');
 interface IProps {
     count: any;
     router: any;
+    app: any;
     dispatch: any;
 }
 
@@ -123,8 +126,8 @@ class Router extends PureComponent<IProps> {
   }
 
   render() {
-    const { dispatch, count, router } = this.props;
-    // if (app.loading) return <Loading />
+    const { dispatch, router, app } = this.props;
+    if (app.loading) return <Loading />;
 
     const navigation = addNavigationHelpers({
       dispatch,
@@ -141,7 +144,7 @@ export function routerReducer(state?: any, action: any = {}) {
 
 // @connect(({ app, router }) => ({ app, router }))
 function mapStateToProps(state: any) {
-    return { count: state.count, router : state.router};
+    return { count: state.count, router : state.router, app: state.app};
   }
   export default connect(mapStateToProps)(Router);
 // export default Router

@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "module": "es2017",
+        "module": "es6",
         "target": "es2017",
         "moduleResolution": "node",
         "jsx": "react-native",
