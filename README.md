@@ -1,4 +1,4 @@
-# Dva-RN-TS
+# React-Native-Dva-Typescript
 
 
 a React Native  powered by [dva-core](https://github.com/dvajs/dva/tree/master/packages/dva-core) , [react-navigation](https://github.com/react-community/react-navigation)  and [typescript](https://github.com/Microsoft/TypeScript)
