@@ -39,7 +39,7 @@ class App extends Component<Props> {
                 <Button title="-" onPress={() => { this.props.dispatch({ type: 'count/minus' }); }} />
                 <Button title="+ async" onPress={() => { this.props.dispatch({ type: 'count/addWithDelay' }); }} />
                 <Button title="Go TO Detail" onPress={() => { this.props.dispatch(NavigationActions.navigate({ routeName: RouterName.Detail })); }} />
-                <Button title="Go TO Login" onPress={() => { this.props.dispatch(NavigationActions.navigate({ routeName: RouterName.Login })); }} />
+                <Button title="Go TO Account" onPress={() => { this.props.dispatch(NavigationActions.navigate({ routeName: RouterName.Account })); }} />
             </View>
         );
     }
