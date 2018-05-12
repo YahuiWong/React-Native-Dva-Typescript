@@ -4,9 +4,11 @@ import {
     Text,
     View
 } from "react-native";
+import { NavigationScreenProps } from "react-navigation";
 interface Props {
 }
-export default class App extends Component<Props> {
+type IPropsDetail = NavigationScreenProps&Props;
+export default class Detail extends Component<IPropsDetail> {
     static navigationOptions = {
         title: 'Detail',
       };
@@ -18,7 +20,7 @@ export default class App extends Component<Props> {
                     Welcome to React Native!
                 </Text>
                 <Text style={styles.text}>
-                    Detail
+                    Detail from {this.props.navigation.state.params.from}
                 </Text>
             </View>
         );

@@ -6,16 +6,17 @@ import {
     Button,
     Image
 } from "react-native";
-import { NavigationTabScreenOptions } from "react-navigation";
+import { NavigationTabScreenOptions, NavigationScreenProps } from "react-navigation";
 import { NavigationActions } from '../utils';
 import { connect } from '../utils/dva';
-import {countState} from '../models/states';
+import { countState } from '../models/states';
 import * as RouterName from '../types/const/router';
 interface Props {
-    count: countState ;
+    count: countState;
     dispatch?: any;
 }
-class App extends Component<Props> {
+type IPropsHome = NavigationScreenProps & Props;
+class Home extends Component<IPropsHome> {
     static navigationOptions: NavigationTabScreenOptions = {
         title: 'Home',
         tabBarLabel: 'Home',
@@ -38,7 +39,7 @@ class App extends Component<Props> {
                 <Button title="+" onPress={() => { this.props.dispatch({ type: 'count/add' }); }} />
                 <Button title="-" onPress={() => { this.props.dispatch({ type: 'count/minus' }); }} />
                 <Button title="+ async" onPress={() => { this.props.dispatch({ type: 'count/addWithDelay' }); }} />
-                <Button title="Go TO Detail" onPress={() => { this.props.dispatch(NavigationActions.navigate({ routeName: RouterName.Detail })); }} />
+                <Button title="Go TO Detail" onPress={() => { this.props.dispatch(NavigationActions.navigate({ routeName: RouterName.Detail, params: { from: "Home" } })); }} />
                 <Button title="Go TO Account" onPress={() => { this.props.dispatch(NavigationActions.navigate({ routeName: RouterName.Account })); }} />
             </View>
         );
@@ -67,4 +68,4 @@ function mapStateToProps(state: any) {
         ...state
     };
 }
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(Home);
