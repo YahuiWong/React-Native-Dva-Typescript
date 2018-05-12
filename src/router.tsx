@@ -6,6 +6,7 @@ import {
   TabBarBottom,
   addNavigationHelpers,
   NavigationActions,
+  NavigationState,
 } from 'react-navigation';
 import {
   initializeListeners,
@@ -79,7 +80,7 @@ const AppNavigator = StackNavigator(
   }
 );
 
-function getCurrentScreen(navigationState: any): any {
+function getCurrentScreen(navigationState: NavigationState): any {
   if (!navigationState) {
     return null;
   }
