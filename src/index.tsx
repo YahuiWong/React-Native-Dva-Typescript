@@ -5,12 +5,12 @@ import {dva , Model} from './utils/dva';
 import Router, { routerMiddleware } from './router';
 
 import count from './models/count';
-
+import appm from './models/app';
 import router from './models/router';
 import Home from './containers/Home';
 const app = dva({
     initialState: {},
-    models: [router, count],
+    models: [router, count, appm],
     // models:[m],
     onError(e: any) {
         console.error('onError', e);

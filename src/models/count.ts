@@ -4,7 +4,7 @@ import {delay} from '../utils/index';
 import { Model } from "../utils/dva";
 
 
-type countState= number;
+export type countState= number;
 
 let initState = SImmutable<countState>(0 as countState);
 export default  {
