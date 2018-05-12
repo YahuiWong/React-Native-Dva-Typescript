@@ -5,7 +5,7 @@ import {connect} from '../utils/dva';
 // import { Button, Touchable } from '../components';
 
 import { createAction, NavigationActions } from '../utils';
-import {AppState} from '../models/app';
+import {AppState} from '../models/states';
 interface Props extends AppState {
     dispatch?: any;
 }
