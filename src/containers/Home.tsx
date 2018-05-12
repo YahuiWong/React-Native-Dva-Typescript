@@ -9,7 +9,7 @@ import {
 import { NavigationTabScreenOptions } from "react-navigation";
 import { NavigationActions } from '../utils';
 import { connect } from '../utils/dva';
-import {countState} from '../models/count';
+import {countState} from '../models/states';
 interface Props {
     count: countState ;
     dispatch?: any;

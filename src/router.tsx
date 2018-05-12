@@ -20,7 +20,7 @@ import * as ModelsStates from './models/states';
 import Login from './containers/Login';
 import Home from './containers/Home';
 import Home1 from './containers/Home';
-import Home2 from './containers/Home';
+import Account from './containers/Account';
 import Detail from './containers/Detail';
 import Loading from './containers/Loading';
 
@@ -28,7 +28,7 @@ const HomeNavigator = TabNavigator(
   {
     Home: { screen: Home },
     Home1: { screen: Home1 },
-    Home2: { screen: Home2 }
+    Account: { screen: Account }
   },
   {
     tabBarComponent: TabBarBottom,
