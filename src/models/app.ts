@@ -1,12 +1,8 @@
 import { createAction, NavigationActions, Storage } from '../utils';
 import * as authService from '../services/auth';
 import { Model } from '../utils/dva';
+import {AppState} from './states';
 
-export type AppState = {
-  login: boolean,
-  loading: boolean,
-  fetching: boolean,
-};
 
 export default {
   namespace: 'app',

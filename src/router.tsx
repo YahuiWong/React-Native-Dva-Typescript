@@ -14,6 +14,8 @@ import {
 } from 'react-navigation-redux-helpers';
 import { connect } from 'react-redux';
 
+import * as ModelsStates from './models/states';
+
 import Login from './containers/Login';
 import Home from './containers/Home';
 import Home1 from './containers/Home';
@@ -94,9 +96,9 @@ export const routerMiddleware = createReactNavigationReduxMiddleware(
 );
 const addListener = createReduxBoundAddListener('root');
 interface IProps {
-  count: any;
+  count: ModelsStates.countState;
+  app: ModelsStates.AppState;
   router: any;
-  app: any;
   dispatch: any;
 }
 

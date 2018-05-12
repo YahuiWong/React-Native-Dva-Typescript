@@ -1,6 +1,7 @@
 import { delay, NavigationActions } from '../utils';
-import { routerReducer } from '../router';
 import { Model , EffectsCommandMap} from "../utils/dva";
+import { routerState} from './states';
+import { routerReducer } from './states/router';
 const actions = Object.values(NavigationActions).filter(
   (x: any) => typeof x === 'string' && x.startsWith('Navigation/')
 );
@@ -13,7 +14,7 @@ const isPushAction = (action: any) =>
 export default {
   namespace: 'router',
   state: {
-    ...routerReducer(),
+    ...routerState,
   },
   reducers: {
     apply(state: any, { payload: action }) {
