@@ -7,6 +7,7 @@ import {
     Image
 } from "react-native";
 import { NavigationTabScreenOptions } from "react-navigation";
+import * as RouterName from '../types/const/router';
 import { NavigationActions } from '../utils';
 import { connect } from '../utils/dva';
 import { AppState } from '../models/states';
@@ -27,7 +28,7 @@ class Account extends Component<IPropsAccount> {
     };
 
     gotoLogin = () => {
-        this.props.dispatch(NavigationActions.navigate({ routeName: 'Login' }));
+        this.props.dispatch(NavigationActions.navigate({ routeName: RouterName.Login }));
     }
 
     logout = () => {

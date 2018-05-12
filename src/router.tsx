@@ -14,6 +14,7 @@ import {
   createReactNavigationReduxMiddleware,
 } from 'react-navigation-redux-helpers';
 import { connect } from 'react-redux';
+import * as RouterName from './types/const/router';
 
 import * as ModelsStates from './models/states';
 
@@ -26,9 +27,9 @@ import Loading from './containers/Loading';
 
 const HomeNavigator = TabNavigator(
   {
-    Home: { screen: Home },
-    Home1: { screen: Home1 },
-    Account: { screen: Account }
+    [RouterName.Home]: { screen: Home },
+    [RouterName.Home1]: { screen: Home1 },
+    [RouterName.Account]: { screen: Account }
   },
   {
     tabBarComponent: TabBarBottom,
@@ -42,9 +43,9 @@ const HomeNavigator = TabNavigator(
 
 const AppNavigator = StackNavigator(
   {
-    Login: { screen: Login },
-    Main: { screen: HomeNavigator },
-    Detail: { screen: Detail },
+    [RouterName.Login]: { screen: Login },
+    [RouterName.Main]: { screen: HomeNavigator },
+    [RouterName.Detail]: { screen: Detail },
   },
   {
     // headerMode: 'none',
