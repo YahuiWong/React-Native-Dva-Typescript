@@ -23,7 +23,7 @@ class Home extends Component<IPropsHome> {
         tabBarIcon: ({ focused, tintColor }) => (
             <Image
                 style={[styles.icon, { tintColor: focused ? tintColor : 'gray' }]}
-                source={require('../images/house.png')}
+                source={require('../assets/images/house.png')}
             />
         ),
     };

@@ -22,7 +22,7 @@ class Account extends Component<IPropsAccount> {
         tabBarIcon: ({ focused, tintColor }) => (
             <Image
                 style={[styles.icon, { tintColor: focused ? tintColor : 'gray' }]}
-                source={require('../images/person.png')}
+                source={require('../assets/images/person.png')}
             />
         ),
     };
