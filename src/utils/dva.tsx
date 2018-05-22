@@ -31,8 +31,6 @@ import {
   Action,
   ReducersMapObject,
   Dispatch,
-  MiddlewareAPI,
-  StoreEnhancer
 } from 'redux';
 
 export interface EffectsCommandMap {

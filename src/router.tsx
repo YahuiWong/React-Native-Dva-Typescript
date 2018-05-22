@@ -6,6 +6,7 @@ import {
   TabBarBottom,
   addNavigationHelpers,
   NavigationActions,
+  NavigationState,
 } from 'react-navigation';
 import {
   initializeListeners,
@@ -13,19 +14,22 @@ import {
   createReactNavigationReduxMiddleware,
 } from 'react-navigation-redux-helpers';
 import { connect } from 'react-redux';
+import * as RouterName from './types/const/router';
+
+import * as ModelsStates from './models/states';
 
 import Login from './containers/Login';
 import Home from './containers/Home';
 import Home1 from './containers/Home';
-import Home2 from './containers/Home';
+import Account from './containers/Account';
 import Detail from './containers/Detail';
 import Loading from './containers/Loading';
 
 const HomeNavigator = TabNavigator(
   {
-    Home: { screen: Home },
-    Home1: { screen: Home1 },
-    Home2: { screen: Home2 }
+    [RouterName.Home]: { screen: Home },
+    [RouterName.Home1]: { screen: Home1 },
+    [RouterName.Account]: { screen: Account }
   },
   {
     tabBarComponent: TabBarBottom,
@@ -39,9 +43,9 @@ const HomeNavigator = TabNavigator(
 
 const AppNavigator = StackNavigator(
   {
-    Login: { screen: Login },
-    Main: { screen: HomeNavigator },
-    Detail: { screen: Detail },
+    [RouterName.Login]: { screen: Login },
+    [RouterName.Main]: { screen: HomeNavigator },
+    [RouterName.Detail]: { screen: Detail },
   },
   {
     // headerMode: 'none',
@@ -77,7 +81,7 @@ const AppNavigator = StackNavigator(
   }
 );
 
-function getCurrentScreen(navigationState: any): any {
+function getCurrentScreen(navigationState: NavigationState): any {
   if (!navigationState) {
     return null;
   }
@@ -94,9 +98,9 @@ export const routerMiddleware = createReactNavigationReduxMiddleware(
 );
 const addListener = createReduxBoundAddListener('root');
 interface IProps {
-  count: any;
+  count: ModelsStates.countState;
+  app: ModelsStates.AppState;
   router: any;
-  app: any;
   dispatch: any;
 }
 

@@ -1,13 +1,13 @@
-import SImmutable from 'seamless-immutable';
+// import SImmutable from 'seamless-immutable';
 
-import {delay} from '../utils/index';
+import { delay } from '../utils/index';
 import { Model } from "../utils/dva";
+import { countState } from './states';
 
 
-export type countState= number;
 
-let initState = SImmutable<countState>(0 as countState);
-export default  {
+let initState: countState = 0;
+export default {
   namespace: 'count',
   state: initState,
   reducers: {
