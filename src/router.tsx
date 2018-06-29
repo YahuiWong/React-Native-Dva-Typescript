@@ -1,19 +1,17 @@
-import React, { PureComponent } from 'react';
-import { BackHandler, Animated, Easing } from 'react-native';
+import React, { PureComponent } from 'react'
+import { BackHandler, Animated, Easing } from 'react-native'
 import {
-  StackNavigator,
-  TabNavigator,
-  TabBarBottom,
-  addNavigationHelpers,
+  createStackNavigator,
+  createBottomTabNavigator,
   NavigationActions,
   NavigationState,
-} from 'react-navigation';
+} from 'react-navigation'
 import {
-  initializeListeners,
-  createReduxBoundAddListener,
+  reduxifyNavigator,
   createReactNavigationReduxMiddleware,
-} from 'react-navigation-redux-helpers';
-import { connect } from 'react-redux';
+  createNavigationReducer,
+} from 'react-navigation-redux-helpers'
+import { connect } from 'react-redux'
 import * as RouterName from './types/const/router';
 
 import * as ModelsStates from './models/states';
@@ -25,27 +23,35 @@ import Account from './containers/Account';
 import Detail from './containers/Detail';
 import Loading from './containers/Loading';
 
-const HomeNavigator = TabNavigator(
+const HomeNavigator = createBottomTabNavigator(
   {
     [RouterName.Home]: { screen: Home },
     [RouterName.Home1]: { screen: Home1 },
     [RouterName.Account]: { screen: Account }
-  },
-  {
-    tabBarComponent: TabBarBottom,
-    tabBarPosition: 'bottom',
-    swipeEnabled: false,
-    animationEnabled: false,
-    // lazyLoad: false,
   }
 );
 
+HomeNavigator.navigationOptions = ({ navigation }:any) => {
+  const { routeName } = navigation.state.routes[navigation.state.index]
 
-const AppNavigator = StackNavigator(
+  return {
+    headerTitle: routeName,
+  }
+}
+
+const MainNavigator = createStackNavigator(
   {
+    HomeNavigator: { screen: HomeNavigator },
+    Detail: { screen: Detail },
+  },
+  {
+    headerMode: 'float',
+  }
+)
+const AppNavigator = createStackNavigator(
+  {
+    [RouterName.Main]: { screen: MainNavigator },
     [RouterName.Login]: { screen: Login },
-    [RouterName.Main]: { screen: HomeNavigator },
-    [RouterName.Detail]: { screen: Detail },
   },
   {
     // headerMode: 'none',
@@ -81,22 +87,24 @@ const AppNavigator = StackNavigator(
   }
 );
 
-function getCurrentScreen(navigationState: NavigationState): any {
-  if (!navigationState) {
-    return null;
-  }
-  const route = navigationState.routes[navigationState.index];
-  if (route.routes) {
-    return getCurrentScreen(route);
-  }
-  return route.routeName;
-}
+export const routerReducer = createNavigationReducer(AppNavigator)
 
-export const routerMiddleware = createReactNavigationReduxMiddleware(
+export const routerMiddleware = createReactNavigationReduxMiddleware<IProps>(
   'root',
-  (state: any) => state.router
-);
-const addListener = createReduxBoundAddListener('root');
+  state => state.router
+)
+const App = reduxifyNavigator(AppNavigator, 'root')
+
+function getActiveRouteName(navigationState:NavigationState) {
+  if (!navigationState) {
+    return null
+  }
+  const route = navigationState.routes[navigationState.index]
+  if (route.routes) {
+    return getActiveRouteName(route)
+  }
+  return route.routeName
+}
 interface IProps {
   count: ModelsStates.countState;
   app: ModelsStates.AppState;
@@ -106,19 +114,16 @@ interface IProps {
 
 class Router extends PureComponent<IProps> {
   componentWillMount() {
-    BackHandler.addEventListener('hardwareBackPress', this.backHandle);
-  }
-
-  componentDidMount() {
-    initializeListeners('root', this.props.router);
+    BackHandler.addEventListener('hardwareBackPress', this.backHandle)
   }
 
   componentWillUnmount() {
-    BackHandler.removeEventListener('hardwareBackPress', this.backHandle);
+    BackHandler.removeEventListener('hardwareBackPress', this.backHandle)
   }
 
+
   backHandle = () => {
-    const currentScreen = getCurrentScreen(this.props.router);
+    const currentScreen = getActiveRouteName(this.props.router);
     if (currentScreen === 'Login') {
       return true;
     }
@@ -133,17 +138,10 @@ class Router extends PureComponent<IProps> {
     const { dispatch, router, app } = this.props;
     if (app.loading) return <Loading />;
 
-    const navigation = addNavigationHelpers({
-      dispatch,
-      state: router,
-      addListener,
-    });
-    return <AppNavigator navigation={navigation} />;
-  }
-}
+    if (app.loading) return <Loading />
 
-export function routerReducer(state?: any, action: any = {}) {
-  return AppNavigator.router.getStateForAction(action, state);
+    return <App dispatch={dispatch} state={router} />
+  }
 }
 
 // @connect(({ app, router }) => ({ app, router }))

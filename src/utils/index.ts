@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { ListView, Dimensions } from 'react-native';
-export { NavigationActions } from 'react-navigation';
+export { NavigationActions ,StackActions} from 'react-navigation';
 export { default as Storage } from './storage';
 export const setAccessToken = (access_token: string) => {
     axios.defaults.headers.common['Access-Token'] = access_token;

@@ -25,12 +25,7 @@ export default {
       yield put(createAction('updateState')({ fetching: true }));
       const login = yield call(authService.login, payload);
       if (login) {
-        yield put(
-          NavigationActions.reset({
-            index: 0,
-            actions: [NavigationActions.navigate({ routeName: 'Main' })],
-          })
-        );
+        yield put(NavigationActions.back())
       }
       yield put(createAction('updateState')({ login, fetching: false }));
       Storage.set('login', login);

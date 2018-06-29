@@ -4,6 +4,7 @@ let {create} = require("dva-core");
 export { connect };
 export interface Options {
   models: Model[];
+  extraReducers: any;
   initialState: any;
   onError: (e: any) => void;
   onAction: any[];
